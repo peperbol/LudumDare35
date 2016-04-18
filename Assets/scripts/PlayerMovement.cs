@@ -17,18 +17,22 @@ public class PlayerMovement : MonoBehaviour
     public float FlySpeed;
     LineRenderer lr;
     Vector3 headOffset;
-
+    ParticleSystem ps;
     public int ID { get { return id; } }
 
     void Start()
     {
         Shooting = false;
         lr = GetComponent<LineRenderer>();
+        ps = GetComponentInChildren<ParticleSystem>();
+        ps.Stop();
         track = new Queue<Vector3>();
         trackRots = new Queue<Quaternion>();
         headOffset = -head.localPosition;
         id = num++;
         setLayer(transform);
+        GetComponentsInChildren<Renderer>().All(e => { e.material = Resources.Load<Material>("mat_Player" + ID);return true; });
+        ps.GetComponent<Renderer>().material = Resources.Load<Material>("mat_Particle" + ID);
     }
     void setLayer(Transform t)
     {
@@ -109,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Pull()
     {
+        ps.Play();
         Vector3 pos = head.position;
         Quaternion q = head.rotation;
         if (track.Count > 2)
@@ -128,5 +133,6 @@ public class PlayerMovement : MonoBehaviour
         Shooting = false;
         head.localRotation = Quaternion.identity;
         head.localPosition = -headOffset;
+        ps.Stop();
     }
 }
