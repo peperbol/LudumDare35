@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform head;
     public Collider2D killZone;
     public static int num  = 1;
+    public float TurnSpeed;
     int id;
     bool shooting;
     Queue<Vector3> track;
@@ -17,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public float FlySpeed;
     LineRenderer lr;
     Vector3 headOffset;
-    ParticleSystem ps;
+    [System.NonSerialized]
+    public ParticleSystem ps;
     public int ID { get { return id; } }
 
     void Start()
@@ -46,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         RotateTo(new Vector2(Input.GetAxis(id +"Horizontal"), Input.GetAxis(id + "Vertical")));
+        Rotate(Input.GetAxis(id + "Turn"));
         if (Input.GetButtonDown(id + "Shoot")) Shoot();
         lr.SetVertexCount(track.Count);
         lr.SetPositions(track.ToArray());
@@ -59,6 +62,13 @@ public class PlayerMovement : MonoBehaviour
         {
             Quaternion q = Quaternion.LookRotation(Vector3.forward, target);
             toRotate.rotation = Quaternion.Lerp(toRotate.rotation, q, target.magnitude / maxRotationSpeed * Time.deltaTime * 60);
+        }
+    }
+    void Rotate(float f)
+    {
+        if ( toRotate)
+        {
+            toRotate.Rotate(Vector3.forward, f * Time.deltaTime * TurnSpeed);
         }
     }
     bool Shooting
