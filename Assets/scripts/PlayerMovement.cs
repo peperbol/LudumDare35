@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float TurnSpeed;
     int id;
     bool shooting;
+    bool pulling;
     Queue<Vector3> track;
     Queue<Quaternion> trackRots;
     bool flying;
@@ -97,8 +98,9 @@ public class PlayerMovement : MonoBehaviour
             Shooting = true;
             StartCoroutine(Fly());
         }
-        else if (!flying)
+        else if (!flying && !pulling)
         {
+            pulling = true;
             StartCoroutine(Pull());
         }
     }
@@ -144,5 +146,6 @@ public class PlayerMovement : MonoBehaviour
         head.localRotation = Quaternion.identity;
         head.localPosition = -headOffset;
         ps.Stop();
+        pulling = false;
     }
 }
