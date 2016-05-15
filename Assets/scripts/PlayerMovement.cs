@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public Collider2D killZone;
     public static int num  = 1;
     public float TurnSpeed;
+    public float Orientation { get { return orientations[id - 1]; } set { orientations[id - 1] = value; } }
+    static float[] orientations = new float[8];
     int id;
     bool shooting;
     bool pulling;
@@ -23,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public ParticleSystem ps;
     public int ID { get { return id; } }
 
-    void Start()
+    void Awake()
     {
         Shooting = false;
         lr = GetComponent<LineRenderer>();
@@ -48,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotateTo(new Vector2(Input.GetAxis(id +"Horizontal"), Input.GetAxis(id + "Vertical")));
+        RotateTo(RotationSpace.Rotate(new Vector2(Input.GetAxis(id +"Horizontal"), Input.GetAxis(id + "Vertical")),Orientation));
         Rotate(Input.GetAxis(id + "Turn"));
         if (Input.GetButtonDown(id + "Shoot")) Shoot();
         lr.SetVertexCount(track.Count);
