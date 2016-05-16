@@ -21,8 +21,10 @@ public class PlayerMovement : MonoBehaviour
     public float FlySpeed;
     LineRenderer lr;
     Vector3 headOffset;
+    public int minShootDistance = 2;
     [System.NonSerialized]
     public ParticleSystem ps;
+    
     public int ID { get { return id; } }
 
     void Awake()
@@ -125,6 +127,12 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         toRotate = null;
+        if (track.Count <= minShootDistance)
+        {
+            pulling = true;
+            StartCoroutine(Pull());
+        }
+        
     }
 
     IEnumerator Pull()
@@ -132,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
         ps.Play();
         Vector3 pos = head.position;
         Quaternion q = head.rotation;
-        if (track.Count > 2)
+        if (track.Count > minShootDistance)
         {
             killZone.enabled = true;
             while (track.Count > 0)
