@@ -13,30 +13,30 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - player1
-  - player2
-  - player3
-  - player4
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - playerkill1
+  - playerkill2
+  - playerkill3
+  - playerkill4
+  - playerkill5
+  - playerkill6
+  - playerkill7
+  - playerkill8
+  - playerhead1
+  - playerhead2
+  - playerhead3
+  - playerhead4
+  - playerhead5
+  - playerhead6
+  - playerhead7
+  - playerhead8
+  - playerbody1
+  - playerbody2
+  - playerbody3
+  - playerbody4
+  - playerbody5
+  - playerbody6
+  - playerbody7
+  - playerbody8
   m_SortingLayers:
   - name: Default
     uniqueID: 0

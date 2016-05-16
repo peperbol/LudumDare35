@@ -35,16 +35,18 @@ public class PlayerMovement : MonoBehaviour
         trackRots = new Queue<Quaternion>();
         headOffset = -head.localPosition;
         id = num++;
-        setLayer(transform);
+        setLayer(transform, 24);
+        setLayer(head, 16);
+        setLayer(killZone.transform, 8);
         GetComponentsInChildren<Renderer>().All(e => { e.material = Resources.Load<Material>("mat_Player" + ID);return true; });
         ps.GetComponent<Renderer>().material = Resources.Load<Material>("mat_Particle" + ID);
     }
-    void setLayer(Transform t)
+    void setLayer(Transform t, int start)
     {
-        t.gameObject.layer = 20 + ID;
+        t.gameObject.layer = start + ID - 1;
         for (int i = 0; i < t.childCount; i++)
         {
-            setLayer(t.GetChild(i));
+            setLayer(t.GetChild(i), start);
         }
     }
     // Update is called once per frame
