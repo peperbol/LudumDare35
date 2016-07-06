@@ -32,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
         Shooting = false;
         lr = GetComponent<LineRenderer>();
         ps = GetComponentInChildren<ParticleSystem>();
-        ps.Stop();
+        if(ps)
+            ps.Stop();
         track = new Queue<Vector3>();
         trackRots = new Queue<Quaternion>();
         headOffset = -head.localPosition;
@@ -41,7 +42,9 @@ public class PlayerMovement : MonoBehaviour
         setLayer(head, 16);
         setLayer(killZone.transform, 8);
         GetComponentsInChildren<Renderer>().All(e => { e.material = Resources.Load<Material>("mat_Player" + ID);return true; });
-        ps.GetComponent<Renderer>().material = Resources.Load<Material>("mat_Particle" + ID);
+
+        if (ps)
+            ps.GetComponent<Renderer>().material = Resources.Load<Material>("mat_waterflowparticle" );
     }
     void setLayer(Transform t, int start)
     {
@@ -67,7 +70,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (target.sqrMagnitude > 0 && toRotate)
         {
-            Quaternion q = Quaternion.LookRotation(Vector3.forward, target);
+
+            Quaternion q = Quaternion.LookRotation( Vector3.down, new Vector3(target.x,0,target.y));
             toRotate.rotation = Quaternion.Lerp(toRotate.rotation, q, target.magnitude / maxRotationSpeed * Time.deltaTime * 60);
         }
     }
@@ -137,7 +141,8 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Pull()
     {
-        ps.Play();
+        if (ps)
+            ps.Play();
         Vector3 pos = head.position;
         Quaternion q = head.rotation;
         if (track.Count > minShootDistance)
@@ -157,7 +162,9 @@ public class PlayerMovement : MonoBehaviour
         Shooting = false;
         head.localRotation = Quaternion.identity;
         head.localPosition = -headOffset;
-        ps.Stop();
+
+        if (ps)
+            ps.Stop();
         pulling = false;
     }
 }

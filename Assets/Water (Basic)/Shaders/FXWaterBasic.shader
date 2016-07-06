@@ -5,6 +5,7 @@ Properties {
 	[NoScaleOffset] _ColorControl ("Reflective color (RGB) fresnel (A) ", 2D) = "" { }
 	[NoScaleOffset] _BumpMap ("Waves Normalmap ", 2D) = "" { }
 	WaveSpeed ("Wave speed (map1 x,y; map2 x,y)", Vector) = (19,9,-16,-7)
+	_Color("Main Color", COLOR) = (1,1,1,1)
 	}
 
 CGINCLUDE
@@ -16,6 +17,7 @@ uniform float4 _horizonColor;
 uniform float4 WaveSpeed;
 uniform float _WaveScale;
 uniform float4 _WaveOffset;
+uniform float4 _Color;
 
 struct appdata {
 	float4 vertex : POSITION;
@@ -77,6 +79,7 @@ half4 frag( v2f i ) : COLOR
 	half4 col;
 	col.rgb = lerp( water.rgb, _horizonColor.rgb, water.a );
 	col.a = _horizonColor.a;
+	col = col * _Color;
 
 	UNITY_APPLY_FOG(i.fogCoord, col);
 	return col;

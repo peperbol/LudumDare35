@@ -79,7 +79,7 @@ Material:
       data:
         first:
           name: _WaveScale
-        second: 0.066
+        second: 0.0434
       data:
         first:
           name: _Highlight
@@ -112,7 +112,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.7007858, g: 0.48122376, b: 0.47429618, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _SpecColor
@@ -128,7 +128,7 @@ Material:
       data:
         first:
           name: _horizonColor
-        second: {r: 1, g: 0.347, b: 0.6290964, a: 0}
+        second: {r: 1, g: 0.36764705, b: 0.6408239, a: 0}
       data:
         first:
           name: _ColorControl_ST
@@ -136,7 +136,7 @@ Material:
       data:
         first:
           name: WaveSpeed
-        second: {r: 9.6877, g: 4.818982, b: -7.913228, a: 287.0297}
+        second: {r: 9.6877, g: 4.818982, b: -7.913228, a: 2.870297}
       data:
         first:
           name: _ColorControlCube_ST

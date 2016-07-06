@@ -6,7 +6,7 @@ public class RaintHit : MonoBehaviour
     ParticleSystem ps;
     ParticleCollisionEvent[] particleEvent;
     public GameObject dripPrefab;
-    void Start()
+    void Awake()
     {
         ps = GetComponent<ParticleSystem>();
         particleEvent = new ParticleCollisionEvent[16];

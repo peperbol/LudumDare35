@@ -6,6 +6,7 @@ public class RotationSpace : MonoBehaviour {
 
 	void Start () {
         me = transform;
+        transform.position = Vector3.zero;
 	}
 	
     public static Vector2 Rotate(Vector2 v, float rot)

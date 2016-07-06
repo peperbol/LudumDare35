@@ -10,7 +10,7 @@ public class SelectPlayerRotation : MonoBehaviour {
 	void Start () {
         img = GetComponent<Image>();
         id = player.ID;
-        transform.rotation = Quaternion.Euler(0, 0, player.Orientation);
+        transform.localRotation = Quaternion.Euler(0,0, player.Orientation);
     }
 	
 	void Update () {
