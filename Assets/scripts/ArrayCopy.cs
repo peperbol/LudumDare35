@@ -16,7 +16,6 @@ public class ArrayCopy : MonoBehaviour {
             go.transform.localScale = scale;
             Material mat = go.GetComponent<Renderer>().material;
             go.GetComponent<Renderer>().material.color = mat.color.SetV(mat.color.GetV() * Mathf.Pow((((float)amountOfcopies) / (amountOfcopies + 1)), 3));
-            Debug.Log(amountOfcopies + " " + Mathf.Pow((((float)amountOfcopies) / (amountOfcopies + 1)), 2) + " " + mat.color.GetV());
         }
 	}
 	

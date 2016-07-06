@@ -6,7 +6,6 @@ public class KillZone : MonoBehaviour
     
     public void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(5456);
         PlayerMovement p = collision.GetComponentInParent<PlayerMovement>();
         if (p)
         {

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour {
     public static GameOver instance;
+    public float timeoutForInput;
     int id;
     Text t;
     void Start () {
@@ -14,6 +15,10 @@ public class GameOver : MonoBehaviour {
     }
 
 	void Update () {
+        if (timeoutForInput > 0)
+        {
+            timeoutForInput -= Time.deltaTime;
+        } else
         if (Input.GetButtonDown(id + "Shoot"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

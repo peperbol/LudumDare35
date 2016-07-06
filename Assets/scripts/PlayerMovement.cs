@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public static int num  = 1;
     public float TurnSpeed;
     public float Orientation { get { return orientations[id - 1]; } set { orientations[id - 1] = value; } }
+    public Renderer headVisual;
     static float[] orientations = new float[8];
     int id;
     bool shooting;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     bool flying;
     public float FlySpeed;
     LineRenderer lr;
+    Collider headCollider;
     Vector3 headOffset;
     public int minShootDistance = 2;
     [System.NonSerialized]
@@ -31,8 +33,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Shooting = false;
         lr = GetComponent<LineRenderer>();
+        headCollider = head.GetComponentInChildren<Collider>();
         ps = GetComponentInChildren<ParticleSystem>();
-        if(ps)
+        if (ps)
             ps.Stop();
         track = new Queue<Vector3>();
         trackRots = new Queue<Quaternion>();
@@ -41,10 +44,12 @@ public class PlayerMovement : MonoBehaviour
         setLayer(transform, 24);
         setLayer(head, 16);
         setLayer(killZone.transform, 8);
-        GetComponentsInChildren<Renderer>().All(e => { e.material = Resources.Load<Material>("mat_Player" + ID);return true; });
+        GetComponentsInChildren<Renderer>().All(e => { e.material = Resources.Load<Material>("mat_Player" + ID); return true; });
 
         if (ps)
-            ps.GetComponent<Renderer>().material = Resources.Load<Material>("mat_waterflowparticle" );
+            ps.GetComponent<Renderer>().material = Resources.Load<Material>("mat_waterflowparticle");
+        headVisual.material.color = headVisual.material.color.SetA(0.3f);
+        headVisual.enabled = false;
     }
     void setLayer(Transform t, int start)
     {
@@ -115,10 +120,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Hit() { flying = false; }
+    public void Hit() { flying = false;  }
     IEnumerator Fly()
     {
-        flying = true;
+
+        headCollider.enabled = headVisual.enabled = flying = true;
         track.Enqueue(head.position);
         trackRots.Enqueue(head.rotation);
 
@@ -137,6 +143,7 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Pull());
         }
         
+        headCollider.enabled = false;
     }
 
     IEnumerator Pull()
@@ -159,6 +166,10 @@ public class PlayerMovement : MonoBehaviour
 
             killZone.enabled = false;
         }
+        else
+        {
+            track.Clear();
+        }
         Shooting = false;
         head.localRotation = Quaternion.identity;
         head.localPosition = -headOffset;
@@ -166,5 +177,6 @@ public class PlayerMovement : MonoBehaviour
         if (ps)
             ps.Stop();
         pulling = false;
+        headVisual.enabled = false;
     }
 }
