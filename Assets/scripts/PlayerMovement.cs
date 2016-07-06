@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float maxRotationSpeed;
     public Transform head;
-    public Collider2D killZone;
+    public Collider killZone;
     public static int num  = 1;
     public float TurnSpeed;
     public float Orientation { get { return orientations[id - 1]; } set { orientations[id - 1] = value; } }

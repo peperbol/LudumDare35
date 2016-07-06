@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 452586}
   - 114: {fileID: 11465506}
-  - 50: {fileID: 5057250}
+  - 54: {fileID: 5427408}
   m_Layer: 21
   m_Name: HEAD
   m_TagString: Untagged
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 402110}
   - 33: {fileID: 3363608}
   - 23: {fileID: 2336338}
-  - 61: {fileID: 6163818}
+  - 65: {fileID: 6521220}
   m_Layer: 21
   m_Name: head
   m_TagString: Untagged
@@ -45,8 +45,8 @@ GameObject:
   - 4: {fileID: 404852}
   - 33: {fileID: 3359654}
   - 23: {fileID: 2334120}
-  - 61: {fileID: 6103630}
-  - 50: {fileID: 5098384}
+  - 54: {fileID: 5465326}
+  - 65: {fileID: 6559086}
   m_Layer: 21
   m_Name: mainBody
   m_TagString: Untagged
@@ -130,8 +130,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400118}
-  - 61: {fileID: 6143400}
   - 114: {fileID: 11427314}
+  - 65: {fileID: 6514160}
   m_Layer: 21
   m_Name: weapon
   m_TagString: Untagged
@@ -233,7 +233,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159846}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 13, y: 6, z: 0}
+  m_LocalPosition: {x: 5.707593, y: -5.8460407, z: -1.2187886}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 427112}
@@ -374,82 +374,72 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105682}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!50 &5057250
-Rigidbody2D:
-  serializedVersion: 2
+--- !u!54 &5427408
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100864}
-  m_UseAutoMass: 0
+  serializedVersion: 2
   m_Mass: 1
-  m_LinearDrag: 0
+  m_Drag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_Constraints: 56
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!50 &5098384
-Rigidbody2D:
-  serializedVersion: 2
+--- !u!54 &5465326
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144412}
-  m_UseAutoMass: 0
+  serializedVersion: 2
   m_Mass: 1
-  m_LinearDrag: 0
+  m_Drag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_Constraints: 56
   m_CollisionDetection: 0
-  m_Constraints: 7
---- !u!61 &6103630
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144412}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
---- !u!61 &6143400
-BoxCollider2D:
+--- !u!65 &6514160
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198518}
-  m_Enabled: 0
-  m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.14543219}
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2831182, y: 0.70884794}
---- !u!61 &6163818
-BoxCollider2D:
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6521220
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105682}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0.0000009536743, y: 0, z: 0.0000019073486}
+--- !u!65 &6559086
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0.00000047683716, y: 0, z: 0.0000009536743}
 --- !u!114 &11427314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -474,9 +464,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxRotationSpeed: 3.5
   head: {fileID: 452586}
-  killZone: {fileID: 6143400}
+  killZone: {fileID: 6514160}
   TurnSpeed: 300
   FlySpeed: 30
+  minShootDistance: 2
 --- !u!114 &11465506
 MonoBehaviour:
   m_ObjectHideFlags: 1

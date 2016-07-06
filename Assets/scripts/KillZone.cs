@@ -3,20 +3,8 @@ using System.Collections;
 
 public class KillZone : MonoBehaviour
 {
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
+    
+    public void OnTriggerEnter(Collider collision)
     {
         PlayerMovement p = collision.GetComponentInParent<PlayerMovement>();
         if (p)
@@ -27,7 +15,7 @@ public class KillZone : MonoBehaviour
             g.transform.position = p.transform.position;
             Destroy(p.gameObject);
         }
-        if ( FindObjectsOfType<PlayerMovement>().Length == 2)
+        if (FindObjectsOfType<PlayerMovement>().Length == 2)
         {
             GameOver.instance.PlayerWin(GetComponentInParent<PlayerMovement>().ID);
         }
