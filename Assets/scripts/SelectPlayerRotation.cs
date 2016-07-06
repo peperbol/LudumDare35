@@ -19,9 +19,9 @@ public class SelectPlayerRotation : MonoBehaviour {
             img.enabled = true;
             Vector2 v = new Vector2(Input.GetAxis(id + "Horizontal"), Input.GetAxis(id + "Vertical"));
             if(v.sqrMagnitude > 0.1f) { 
-            transform.up = -v;
-
-            player.Orientation = transform.eulerAngles.z;
+            transform.localRotation = Quaternion.LookRotation(Vector3.forward, -v) ;
+            
+            player.Orientation = transform.localRotation.eulerAngles.z;
             }
         }
         else img.enabled = false;
