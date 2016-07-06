@@ -169,6 +169,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             track.Clear();
+            trackRots.Clear();
         }
         Shooting = false;
         head.localRotation = Quaternion.identity;
